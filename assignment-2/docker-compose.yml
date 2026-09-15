@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - backend
+      - frontend
+      
+  backend:
+    build: ./server-side-assignment
+    restart: always
+    env_file:
+      - ./server-side-assignment/.env
+    environment:
+      - MONGO_URI=${MONGO_URI_DOCKER}
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "try { rs.status() } catch (e) { rs.initiate({_id: 'rs0', members: [{ _id: 0, host: 'mongo:27017' }]}) }"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build: ./client-side-assignment
+    restart: always
+    env_file:
+      - ./client-side-assignment/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  mongo-data:

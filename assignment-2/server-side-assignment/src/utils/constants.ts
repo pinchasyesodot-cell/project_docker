@@ -1,0 +1,1 @@
+export const SUPPLIER_MARKUP_FACTOR = 1.3
