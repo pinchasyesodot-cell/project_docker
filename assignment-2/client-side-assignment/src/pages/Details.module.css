@@ -1,0 +1,157 @@
+.detailsContainer {
+  padding-bottom: 4rem;
+}
+
+.backButton {
+  margin-bottom: 2rem;
+}
+
+.productCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+}
+
+.imageSection {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.image:hover {
+  transform: scale(1.05);
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  background: rgba(109, 40, 217, 0.2);
+  color: var(--primary-light);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.stock {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.outOfStock {
+  color: var(--danger);
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.supplierInfo {
+  background: var(--surface-hover);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface-hover);
+  padding: 0.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+.quantityDisplay {
+  font-size: 1.25rem;
+  font-weight: bold;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.addToCartBtn {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+  .productCard {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .imageSection {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .actions {
+    flex-direction: column;
+  }
+  
+  .quantityControl {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .addToCartBtn {
+    width: 100%;
+  }
+}

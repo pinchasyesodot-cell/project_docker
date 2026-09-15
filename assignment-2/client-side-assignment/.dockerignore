@@ -1,0 +1,8 @@
+.vscode
+node_modules
+.eslintrc
+.gitignore
+.git
+.pirettierrc
+eslint.config.js
+dist
